@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WaterPlant</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="water">%d ml</string>
+    <string name="frequency">%d/week</string>
+    <string name="temp">%s \u2103</string>
+    <string name="time">%d : %d</string>
+</resources>

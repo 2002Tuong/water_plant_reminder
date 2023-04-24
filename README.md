@@ -27,6 +27,7 @@ Main feature:
     <tr>
         <th> <img src="./screenshots/7.jpg"/></th>
         <th> <img src="./screenshots/8.jpg"/></th>
+        <th> <img src="./screenshots/9.jpg"/></th>
     </tr>
 </table>
 

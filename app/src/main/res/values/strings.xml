@@ -6,4 +6,10 @@
     <string name="frequency">%d/week</string>
     <string name="temp">%s \u2103</string>
     <string name="time">%d : %d</string>
+
+    <string name="underwater">Underwater</string>
+    <string name="advice_underwater">Your plants are showing symptoms of wilting, which can be caused by a variety of conditions</string>
+    <string name="good_plant">Your plant looks healthy</string>
+    <string name="no_detect_issue">No issues detected</string>
+
 </resources>

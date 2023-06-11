@@ -6,8 +6,6 @@ import androidx.hilt.work.HiltWorkerFactory;
 import androidx.work.Configuration;
 import androidx.work.WorkManager;
 
-import com.example.waterplant.database.PlantDatabase;
-
 import javax.inject.Inject;
 
 import dagger.hilt.android.HiltAndroidApp;

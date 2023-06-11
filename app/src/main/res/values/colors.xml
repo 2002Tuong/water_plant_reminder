@@ -11,4 +11,7 @@
     <color name="green_700">#009712</color>
     <color name="red">#FF0000</color>
     <color name="purple_100">#ffaff7</color>
+    <color name="grey_border">#736F73</color>
+    <color name="grey_background">#48C5BDC5</color>
+
 </resources>

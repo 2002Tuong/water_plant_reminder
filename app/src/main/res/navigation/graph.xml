@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/listPlantFragment"
-        android:name="com.example.waterplant.ui.ListPlantFragment"
+        android:name="com.example.waterplant.presentation.ui.main_screen.ListPlantFragment"
         android:label="fragment_list_plant"
         tools:layout="@layout/fragment_list_plant" >
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailPlantFragment"
-        android:name="com.example.waterplant.ui.DetailPlantFragment"
+        android:name="com.example.waterplant.presentation.ui.main_screen.DetailPlantFragment"
         android:label="fragment_detail_plant"
         tools:layout="@layout/fragment_detail_plant" >
         <argument
@@ -48,12 +48,12 @@
     </fragment>
     <fragment
         android:id="@+id/addNewPlantFragment"
-        android:name="com.example.waterplant.ui.AddNewPlantFragment"
+        android:name="com.example.waterplant.presentation.ui.main_screen.AddNewPlantFragment"
         android:label="fragment_add_new_plant"
         tools:layout="@layout/fragment_add_new_plant" />
     <fragment
         android:id="@+id/searchableDialogFragment"
-        android:name="com.example.waterplant.ui.SearchableDialogFragment"
+        android:name="com.example.waterplant.presentation.ui.main_screen.SearchableDialogFragment"
         android:label="fragment_searchable_dialog"
         tools:layout="@layout/fragment_searchable_dialog" >
         <action

@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -70,7 +71,13 @@ public class DiagnoseResultFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(getActivity()).get(DiagnoseViewModel.class);
-
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                requireActivity().finish();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(callback);
     }
 
     @Override
@@ -84,6 +91,7 @@ public class DiagnoseResultFragment extends Fragment {
                 //deleteThumb();
                 getActivity().getViewModelStore().clear();
                 Navigation.findNavController(view).navigate(R.id.action_diagnoseResultFragment_to_diagnoseFragment);
+                deleteThumb();
             }
         });
         return binding.getRoot();
@@ -111,6 +119,7 @@ public class DiagnoseResultFragment extends Fragment {
         });
 
     }
+
 
     private void deleteThumb() {
         List<ThumbnailUiState> listThumbs = viewModel.getListThumb();

@@ -1,10 +1,14 @@
 package com.example.waterplant.presentation.ui.main_screen;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
@@ -12,15 +16,19 @@ import androidx.work.WorkManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
 
 import com.example.waterplant.common.Constant;
 import com.example.waterplant.R;
 import com.example.waterplant.databinding.ActivityMainBinding;
+import com.example.waterplant.presentation.ui.diagnose_screen.DiagnoseActivity;
 import com.example.waterplant.presentation.ui.main_screen.viewmodel.PlantWaterViewModel;
 import com.example.waterplant.data.worker.ChangeTodayWorker;
 
@@ -62,6 +70,28 @@ public class MainActivity extends AppCompatActivity {
             createRequest();
             isCreateRequest= true;
         }
+        NavigationUI.setupWithNavController(binding.topAppBar, navController);
+        binding.topAppBar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if(item.getItemId() == R.id.diagnose) {
+                    startActivity(new Intent(getApplicationContext() ,DiagnoseActivity.class));
+                }else if(item.getItemId() == R.id.searchableDialogFragment) {
+                    return NavigationUI.onNavDestinationSelected(item, navController);
+                }
+                return true;
+            }
+        });
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController navController, @NonNull NavDestination navDestination, @Nullable Bundle bundle) {
+                if(navDestination.getId() == R.id.searchableDialogFragment) {
+                    binding.coordinatorLayout.setVisibility(View.GONE);
+                }else {
+                    binding.coordinatorLayout.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
     }
 

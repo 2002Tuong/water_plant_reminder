@@ -84,10 +84,6 @@ public class ListPlantFragment extends Fragment implements OnItemTouchCallBack {
             Navigation.findNavController(t).navigate(action);
         });
 
-        binding.searchBar.setOnClickListener(view1 -> {
-            NavDirections action = ListPlantFragmentDirections.actionListPlantFragmentToSearchableDialogFragment2();
-            Navigation.findNavController(view1).navigate(action);
-        });
     }
 
 

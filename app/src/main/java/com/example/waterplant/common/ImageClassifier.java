@@ -33,9 +33,6 @@ public class ImageClassifier {
     private YoloV5Classifier detector = null;
     private String detectLeafModelName = "best-fp16.tflite" ;
 
-    private YoloV5Classifier classifier = null;
-    private String classifierModelName = "leaf-classifier.tflite";
-
     private LeafClassifier leafClassifier = null;
     public ImageClassifier(Context context) throws IOException {
 
@@ -48,19 +45,11 @@ public class ImageClassifier {
                     false,
                     DETECTOR_MODEL_INPUT_SIZE);
         }
-//        if(classifier == null) {
-//            classifier = YoloV5Classifier.create(
-//                    context.getAssets(),
-//                    classifierModelName,
-//                    CLASSIFIER_MODEL_LABELS_FILE,
-//                    false,
-//                    CLASSIFIER_MODEL_INPUT_SIZE
-//            );
-//        }
+
         if(leafClassifier == null) {
             leafClassifier = LeafClassifier.newInstance(context);
         }
-        //setupObjectDetector();
+
     }
     //find leaf in an image of tree
     public List<Classifier.Recognition> detectImage(Bitmap image)  {
@@ -96,24 +85,24 @@ public class ImageClassifier {
 
     //leaf -> diseased
     //or leaf -> healthy
-    public String classifyLeaf(Bitmap source) {
-        try {
-            final  List<Classifier.Recognition> recognitionList = classifier.recognizeImage(source);
-            int index = 0;
-            float maxConfident = 0f;
-            for(int i = 0; i < recognitionList.size(); i++) {
-                if(recognitionList.get(i).getConfidence() > maxConfident) {
-                    index = i;
-                    maxConfident = recognitionList.get(i).getConfidence();
-                }
-            }
-            return recognitionList.get(index).getTitle();
-        }catch (IndexOutOfBoundsException e) {
-            Log.d("ImageClassifier", e.getMessage());
-            e.printStackTrace();
-            return "healthy";
-        }
-    }
+//    public String classifyLeaf(Bitmap source) {
+//        try {
+//            final  List<Classifier.Recognition> recognitionList = classifier.recognizeImage(source);
+//            int index = 0;
+//            float maxConfident = 0f;
+//            for(int i = 0; i < recognitionList.size(); i++) {
+//                if(recognitionList.get(i).getConfidence() > maxConfident) {
+//                    index = i;
+//                    maxConfident = recognitionList.get(i).getConfidence();
+//                }
+//            }
+//            return recognitionList.get(index).getTitle();
+//        }catch (IndexOutOfBoundsException e) {
+//            Log.d("ImageClassifier", e.getMessage());
+//            e.printStackTrace();
+//            return "healthy";
+//        }
+//    }
     public String classifyLeaf1(Bitmap source) {
         TensorBuffer inputFeature0 = TensorBuffer.createFixedSize(new int[]{1,224,224,3}, DataType.FLOAT32);
         ByteBuffer byteBuffer = ByteBuffer.allocateDirect(4*CLASSIFIER_MODEL_INPUT_SIZE*CLASSIFIER_MODEL_INPUT_SIZE*3);
@@ -200,9 +189,7 @@ public class ImageClassifier {
         if(detector != null) {
             detector.close();
         }
-        if(classifier != null) {
-            classifier.close();
-        }
+
     }
 
     public static final int DETECTOR_MODEL_INPUT_SIZE = 416;

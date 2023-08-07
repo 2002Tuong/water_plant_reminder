@@ -11,6 +11,7 @@ Main feature:
 * search the plant you need by name
 * showing the plants need to water today
 * remove reminder by swipe
+* diagnose plant's state
 
 ## Screenshots
 <table>
@@ -28,6 +29,11 @@ Main feature:
         <th> <img src="./screenshots/7.jpg"/></th>
         <th> <img src="./screenshots/8.jpg"/></th>
         <th> <img src="./screenshots/9.jpg"/></th>
+    </tr>
+        <tr>
+        <th> <img src="./screenshots/10.jpg"/></th>
+        <th> <img src="./screenshots/11.jpg"/></th>
+        <th> <img src="./screenshots/12.jpg"/></th>
     </tr>
 </table>
 

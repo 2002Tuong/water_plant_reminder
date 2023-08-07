@@ -196,6 +196,6 @@ public class ImageClassifier {
     public static final String DETECTOR_MODEL_LABELS_FILE = "file:///android_asset/customclasses.txt";
     public static final int CLASSIFIER_MODEL_INPUT_SIZE = 224;
     public static final String CLASSIFIER_MODEL_LABELS_FILE = "file:///android_asset/classifierlabels.txt";
-    public static final float MINIMUM_CONFIDENCE_TF_OD_API = 0.35f;
+    public static final float MINIMUM_CONFIDENCE_TF_OD_API = 0.3f;
     public static final float MINIMUM_CONFIDENCE_OF_CLASSIFIER_TREE = 0.3f;
 }
